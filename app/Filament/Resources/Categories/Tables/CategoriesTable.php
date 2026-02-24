@@ -15,10 +15,21 @@ class CategoriesTable
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->label('Nama Kategori')
                     ->searchable(),
                 TextColumn::make('slug')
                     ->searchable(),
                 TextColumn::make('color')
+                    ->label('Warna')
+                    ->badge()
+                    ->color(fn (string $state) => match ($state) {
+                        'primary' => 'primary',
+                        'success' => 'success',
+                        'danger' => 'danger',
+                        'warning' => 'warning',
+                        'info' => 'info',
+                        default => 'gray',
+                    })
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()

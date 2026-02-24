@@ -25,11 +25,11 @@ class CategoryForm
                 Select::make('color')
                     ->label('Warna Label')
                     ->options([
-                        'primary' => 'Biru (Primary)',
-                        'success' => 'Hijau (Success)',
-                        'danger' => 'Merah (Danger)',
-                        'warning' => 'Kuning (Warning)',
-                        'info' => 'Cyan (Info)',
+                        'primary' => 'Biru',
+                        'success' => 'Hijau',
+                        'danger' => 'Merah',
+                        'warning' => 'Kuning',
+                        'info' => 'Cyan',
                     ])
                     ->default('primary')
                     ->required(),
