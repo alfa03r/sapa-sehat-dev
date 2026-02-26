@@ -45,8 +45,7 @@ class EventsTable
                         default => 'gray',
                     }),
                 ToggleColumn::make('is_featured')
-                    ->label('Tampil di Beranda')
-                    ->boolean(),
+                    ->label('Tampil di Beranda'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
