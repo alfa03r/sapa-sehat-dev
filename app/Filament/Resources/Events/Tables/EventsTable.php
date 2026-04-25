@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Events\Tables;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
@@ -26,9 +27,10 @@ class EventsTable
                     ->limit(50),
                 TextColumn::make('slug')
                     ->searchable(),
-                TextColumn::make('thumbnail')
+                ImageColumn::make('thumbnail')
                     ->label('Poster/Gambar')
-                    ->searchable(),
+                    ->disk('public') // Sesuaikan dengan disk di form
+                    ->square(),
                 TextColumn::make('event_date')
                     ->label('Jadwal')
                     ->dateTime('d M Y H:i')
@@ -39,7 +41,7 @@ class EventsTable
                     ->searchable(),
                 TextColumn::make('status')
                     ->badge()
-                    ->color(fn (string $state): string => match ($state) {
+                    ->color(fn(string $state): string => match ($state) {
                         'active' => 'success',
                         'inactive' => 'danger',
                         default => 'gray',

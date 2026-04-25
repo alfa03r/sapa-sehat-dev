@@ -22,12 +22,12 @@ class EventForm
                     ->relationship('category', 'name')
                     ->label('Kategori')
                     ->required(),
-                    
+
                 TextInput::make('title')
                     ->label('Judul')
                     ->required()
                     ->live(onBlur: true)
-                    ->afterStateUpdated(fn (string $operation, $state, callable $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
+                    ->afterStateUpdated(fn(string $operation, $state, callable $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
 
                 TextInput::make('slug')
                     ->required()
@@ -37,6 +37,7 @@ class EventForm
                     ->label('Poster/Gambar')
                     ->image()
                     ->directory('events-thumbnails')
+                    ->disk('public')
                     ->columnSpanFull(),
 
 
@@ -60,8 +61,9 @@ class EventForm
                 Select::make('status')
                     ->label('Status')
                     ->options([
-                        'active' => 'Active', 
-                        'inactive' => 'Inactive'])
+                        'active' => 'Active',
+                        'inactive' => 'Inactive'
+                    ])
                     ->default('active')
                     ->required(),
 
