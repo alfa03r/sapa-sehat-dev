@@ -28,6 +28,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->brandName('SAPA SEHAT AWALBROS')
             ->colors([
                 'primary' => Color::Blue,
                 'secondary' => Color::Slate,
